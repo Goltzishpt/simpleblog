@@ -2,16 +2,15 @@ from django import forms
 from .models import Post, Category, Comment
 
 
-try:
-    # choices = [('coding', 'coding'), ('sport', 'sport'), ('entertainment', 'entertainment'),]
-    choices = Category.objects.all().values_list('name', 'name')
 
-    choice_list = []
+# choices = [('coding', 'coding'), ('sport', 'sport'), ('entertainment', 'entertainment'),]
+choices = Category.objects.all().values_list('name', 'name')
 
-    for item in choices:
-        choice_list.append(item)
-except Exception as e:
-    pass
+choice_list = []
+
+for item in choices:
+    choice_list.append(item)
+
 
 
 class PostForm(forms.ModelForm):
