@@ -20,6 +20,8 @@ class CreateProfilePageView(CreateView):
         return super().form_valid(form)
 
 
+
+
 class EditProfilePageView(generic.UpdateView):
     model = Profile
     template_name = 'registration/edit_profile_page.html'
