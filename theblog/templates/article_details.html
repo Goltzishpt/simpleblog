@@ -18,6 +18,7 @@ post author: {{ post.author.id }}
                 <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
             {% endif %}
         {% endif %}
+        {{ post.title_tag }}
     </small><br/>
     {% if post.header_image %}
     <img src="{{ post.header_image.url }}"> <br/><br/>
