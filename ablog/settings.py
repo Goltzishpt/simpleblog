@@ -30,10 +30,10 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['GilzaGoltz.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['GilzaGoltz.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
-CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS.copy()
+CSRF_TRUSTED_ORIGINS = ['http://GilzaGoltz.pythonanywhere.com', 'http://localhost', 'http://127.0.0.1']
 
 
 # Application definition
