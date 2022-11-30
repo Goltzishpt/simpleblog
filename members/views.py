@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .forms import SignupForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
-from theblog.models import Profile
+from .models import Profile
 
 
 class CreateProfilePageView(CreateView):
@@ -13,6 +13,7 @@ class CreateProfilePageView(CreateView):
     form_class = ProfilePageForm
     template_name = 'registration/create_user_profile_page.html'
     # fields = '__all__'
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -62,4 +63,3 @@ class UserEditView(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
-
