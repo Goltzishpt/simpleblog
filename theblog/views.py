@@ -6,6 +6,20 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
 
+from django.template.defaultfilters import slugify as django_slugify
+
+alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
+            'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
+            'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'i', 'э': 'e', 'ю': 'yu',
+            'я': 'ya', 'ї': 'i', 'і': 'i'}
+
+
+def slugify(s):
+    """
+    Overriding django slugify that allows to use ukrainian/russian words as well.
+    """
+    return django_slugify(''.join(alphabet.get(w, w) for w in s.lower()))
+
 # def home(request):
 #     return render(request, 'home.html', {})
 
@@ -40,7 +54,10 @@ def CategoryListView(request):
 
 
 def CategoryView(request, cats):
+    if alphabet.keys in cats:
+        slugify(cats)
     category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+
     return render(request, 'categories.html', {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
 
 
@@ -103,3 +120,6 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+
+

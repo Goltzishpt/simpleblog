@@ -15,6 +15,8 @@ class Category(models.Model):
         return reverse('home')
 
 
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField(max_length=255)
