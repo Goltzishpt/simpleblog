@@ -11,7 +11,9 @@ from django.template.defaultfilters import slugify as django_slugify
 alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
             'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
             'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'i', 'э': 'e', 'ю': 'yu',
-            'я': 'ya', 'ї': 'i', 'і': 'i'}
+            'я': 'ya', 'ї': 'i', 'і': 'i', 'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd', 'e': 'e', 'f': 'f', 'g': 'g', 'h': 'h',
+            'i': 'i', 'j': 'j', 'k': 'k', 'l': 'l', 'm': 'm', 'n': 'n', 'o': 'o', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's',
+            't': 't', 'u': 'u', 'v': 'v', 'w': 'w', 'x': 'x', 'y': 'y', 'z': 'z'}
 
 
 def slugify(s):
@@ -54,9 +56,7 @@ def CategoryListView(request):
 
 
 def CategoryView(request, cats):
-    if alphabet.keys in cats:
-        slugify(cats)
-    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    category_posts = Post.objects.filter(category=slugify(cats).replace('-', ' '))
 
     return render(request, 'categories.html', {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
 
