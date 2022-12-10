@@ -2,12 +2,6 @@ from django import forms
 from .models import Post, Category, Comment
 
 
-# choices = [('coding', 'coding'), ('sport', 'sport'), ('entertainment', 'entertainment'),]
-choices = Category.objects.all().values_list('name', 'name')
-
-choice_list = [i for i in choices]
-
-
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -17,11 +11,16 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your text...'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'elder', 'type': 'hidden'}),
-            # 'author': forms.Select(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
             'snippet': forms.Textarea(attrs={'class': 'form-control', 'value': 'Click Link Above To Read Blog Post...'})
         }
+
+        def __init__(self, *args, **kwargs):
+            super(PostForm, self).__init__(*args, **kwargs)
+            self.fields['category'] = forms.ModelChoiceField(
+                queryset=Category.objects.all(),
+                widget=forms.Select(attrs={'class': 'form-control'})
+            )
 
 
 class EditForm(forms.ModelForm):
@@ -32,7 +31,6 @@ class EditForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'This is Title Placeholder Stuff'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'author': forms.Select(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
             'snippet': forms.Textarea(attrs={'class': 'form-control'}),
         }
@@ -47,4 +45,3 @@ class CommentForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'This is Title Placeholder Stuff'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
          }
-

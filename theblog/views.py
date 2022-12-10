@@ -6,7 +6,6 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
 
-
 def LikeView(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
     liked = False
@@ -23,7 +22,6 @@ class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     ordering = ['-post_date']
-    # ordering = ['-id']
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
@@ -32,16 +30,21 @@ class HomeView(ListView):
         return context
 
 
-
-
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
     return render(request, 'category_list.html', {'cat_menu_list': cat_menu_list})
 
 
-def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
-    return render(request, 'categories.html', {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
+class CategoryView(DetailView):
+    model = Category
+    template_name = 'categories.html'
+    context_object_name = 'category'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CategoryView, self).get_context_data(*args, **kwargs)
+        category_posts = Post.objects.filter(category=context['category'].pk)
+        context['category_posts'] = category_posts
+        return context
 
 
 class ArticleDetailView(DetailView):
@@ -67,15 +70,12 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    # fields = '__all__'
-    # fields = ('title', 'body')
 
 
 class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'
-    # fields = '__all__'
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
@@ -86,17 +86,14 @@ class AddCommentView(CreateView):
 
 class AddCategoryView(CreateView):
     model = Category
-    # form_class = PostForm
     template_name = 'add_category.html'
-    fields = '__all__'
-    # fields = ('title', 'body')
+    fields = ['name']
 
 
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
-    # fields = ['title', 'title_tag', 'body']
 
 
 class DeletePostView(DeleteView):

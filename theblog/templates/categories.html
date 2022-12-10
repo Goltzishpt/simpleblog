@@ -2,8 +2,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if category_posts %}
-    <h1>{{ cats }}</h1>
+{% if category %}
+    <h1>{{ category.name }}</h1>
 
     <ul>
     {% for post in category_posts %}

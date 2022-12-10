@@ -1,18 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from datetime import datetime, date
 from ckeditor.fields import RichTextField
+from slugify import slugify
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=15)
+    name = models.CharField(max_length=15, unique=True)
+    slug = models.SlugField()
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('category', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class Profile(models.Model):
@@ -41,9 +47,8 @@ class Post(models.Model):
     body = RichTextField(blank=True, null=True)
     # body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=255, default='coding')
+    category = models.ForeignKey(Category, related_name='post', on_delete=models.DO_NOTHING)
     snippet = models.CharField(max_length=50, default='Click Link Above To Read Blog Post...')
-
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
     def total_likes(self):
@@ -55,6 +60,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         # return reverse('article-detail', args=(str(self.id)))
         return reverse('home')
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
