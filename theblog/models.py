@@ -6,7 +6,7 @@ from slugify import slugify
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=15, unique=True)
+    name = models.CharField(max_length=15, unique=True, default='world')
     slug = models.SlugField()
 
     def __str__(self):
@@ -47,7 +47,7 @@ class Post(models.Model):
     body = RichTextField(blank=True, null=True)
     # body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
-    category = models.ForeignKey(Category, related_name='post', default='coding', null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
     snippet = models.CharField(max_length=50, default='Click Link Above To Read Blog Post...')
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
