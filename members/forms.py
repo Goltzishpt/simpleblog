@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from django.db import models
 from theblog.models import Profile
 
 
@@ -11,12 +12,14 @@ class ProfilePageForm(forms.ModelForm):
 
         widgets ={
             'bio': forms.Textarea(attrs={'class': 'form-control'}),
-            'profile_pic': forms.ImageField(attrs={'class': 'form-control'}),
             'website_url': forms.TextInput(attrs={'class': 'form-control'}),
             'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
             'twitter_url': forms.TextInput(attrs={'class': 'form-control'}),
             'instagram_url': forms.TextInput(attrs={'class': 'form-control'}),
             'pinterest_url': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        models = {
+            'profile_pic': models.ImageField(null=True, blank=True, upload_to='images/'),
         }
 
 
