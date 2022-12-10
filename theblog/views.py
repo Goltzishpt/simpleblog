@@ -5,7 +5,6 @@ from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
-from django.template.defaultfilters import slugify as django_slugify
 
 alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
             'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
@@ -44,10 +43,7 @@ class HomeView(ListView):
 
 
 def slugify(s):
-    """
-    Overriding django slugify that allows to use ukrainian/russian words as well.
-    """
-    return django_slugify(''.join(alphabet.get(w, w) for w in s.lower() if w in alphabet.keys))
+    return ''.join(alphabet.get(w, w) for w in s.lower() if w.isalpha)
 
 
 def CategoryListView(request):
@@ -56,7 +52,7 @@ def CategoryListView(request):
 
 
 def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=slugify(cats).replace('-', ' '))
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
     return render(request, 'categories.html', {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
 
 
