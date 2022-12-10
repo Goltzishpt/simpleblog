@@ -45,7 +45,6 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
-    # body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
     snippet = models.CharField(max_length=50, default='Click Link Above To Read Blog Post...')
@@ -58,7 +57,6 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def get_absolute_url(self):
-        # return reverse('article-detail', args=(str(self.id)))
         return reverse('home')
 
 
@@ -70,4 +68,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.post.title, self)
-
