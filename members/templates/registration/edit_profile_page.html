@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Edit Profile Page{% endblock %}
 {% block content %}
 
@@ -11,10 +12,32 @@
     <div class="form-group">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+<!--            {{ form.as_p }}-->
+<!--            {{ form.media }}-->
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <textarea name="bio" class="form-control"  id="exampleFormControlTextarea1" placeholder="Bio" rows="3">{{ profile.bio }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Default file input example</label>
+                <input name="profile_pic" class="form-control" value="{{ profile.profile_pic }}" type="file"  placeholder="Add photo" id="formFile">
+            </div>
+            <br>
+            <input name="website_url" class="form-control" value="{{ profile.website_url }}" type="text" placeholder="Website" aria-label="default input example">
+            <br>
+            <input name="facebook_url" class="form-control" value="{{ profile.facebook_url }}" type="text" placeholder="Facebook" aria-label="default input example">
+            <br>
+            <input name="twitter_url" class="form-control" value="{{ profile.twitter_url }}"  type="text" placeholder="Twitter" aria-label="default input example">
+            <br>
+            <input name="instagram_url" class="form-control" value="{{ profile.instagram_url }}" type="text" placeholder="Instagram" aria-label="default input example">
+            <br>
+            <input name="pinterest_url" class="form-control" value="{{ profile.pinterest_url }}" type="text" placeholder="Pinterest" aria-label="default input example">
+            <br>
         <button class="btn btn-secondary">Update Profile Page</button>
+            <br><br>
         </form>
     </div>
+
 
     <script>
         var name = "{{ user.id }}";

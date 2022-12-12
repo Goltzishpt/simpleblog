@@ -20,13 +20,16 @@ class CreateProfilePageView(CreateView):
         return super().form_valid(form)
 
 
-
-
 class EditProfilePageView(generic.UpdateView):
     model = Profile
+    form_class = ProfilePageForm
     template_name = 'registration/edit_profile_page.html'
-    fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url', 'pinterest_url']
+    # fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url', 'pinterest_url']
     success_url = reverse_lazy('home')
+
+    def edit_profile(request):
+        form = ProfilePageForm()
+        return render(request, 'registration/edit_profile_page.html', {'form': form})
 
 
 class ShowProfilePageView(DetailView):
