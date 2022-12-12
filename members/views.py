@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .forms import SignupForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
-from theblog.models import Profile
+from theblog.models import Profile, Post
 
 
 class CreateProfilePageView(CreateView):
@@ -41,7 +41,9 @@ class ShowProfilePageView(DetailView):
         # users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        posts = Post.objects.filter(author=self.kwargs['pk'])
         context['page_user'] = page_user
+        context['posts'] = posts
         return context
 
 

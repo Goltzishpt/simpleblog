@@ -49,4 +49,28 @@
     </div>
   </div>
 </div>
+
+<h1>Posts</h1>
+{{ object_list }}
+<ul>
+
+{% for post in posts %}
+    <li>
+        <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+        - <a href="{% url 'category' post.category.slug %}">
+        [{{ post.category }}]</a>
+        - {{ post.author.first_name }} {{ post.author.last_name }}
+        - {{ post.post_date }}
+        {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
+            - <small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small>
+            <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
+            {% endif %}
+        {% endif %}
+        <br/>
+        {{ post.snippet }}
+    </li>
+
+    {% endfor %}
+</ul>
 {% endblock %}
