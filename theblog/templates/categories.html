@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if category %}
-    <h1>{{ category.name }}</h1>
+    <h1 class="glitch" data-text="{{ category.name }}">{{ category.name }}</h1>
 
     <ul>
     {% for post in category_posts %}

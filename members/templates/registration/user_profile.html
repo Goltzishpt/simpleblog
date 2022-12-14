@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 
-<h1>User profile</h1>
+<h1 class="glitch" data-text="User profile">User profile</h1>
 
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
@@ -50,27 +50,33 @@
   </div>
 </div>
 
-<h1>Posts</h1>
-{{ object_list }}
-<ul>
+<h1 class="glitch" data-text="{{ page_user.user.first_name }}`s posts">{{ page_user.user.first_name }}`s posts</h1>
 
-{% for post in posts %}
-    <li>
-        <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
-        - <a href="{% url 'category' post.category.slug %}">
-        [{{ post.category }}]</a>
-        - {{ post.author.first_name }} {{ post.author.last_name }}
-        - {{ post.post_date }}
-        {% if user.is_authenticated %}
-            {% if user.id == post.author.id %}
-            - <small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small>
-            <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
-            {% endif %}
-        {% endif %}
-        <br/>
-        {{ post.snippet }}
-    </li>
 
+<div class="row row-cols-2 row-cols-md-4 g-4">
+  {% for post in posts %}
+      <div class="col">
+        <div class="card">
+          <img src="{% static 'theblog/images/outrun-vaporwave-hd-wallpaper-thumb.jpg' %}" class="card-img-top" alt="..."
+                style="overflow: hidden;">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h5>
+            <p class="card-text">{{ post.snippet }}</p>
+              <hr/>
+                {{ post.author.first_name }} {{ post.author.last_name }} -
+                <a href="{% url 'category' post.category.slug %}">[{{ post.category }}]</a>
+                - {{ post.post_date }}
+                {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
+                <hr/>
+                <small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small>
+                <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
+                {% endif %}
+              {% endif %}
+          </div>
+        </div>
+      </div>
     {% endfor %}
-</ul>
+</div>
+
 {% endblock %}
