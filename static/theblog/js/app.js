@@ -1,4 +1,6 @@
 // Glitch Timeline Function
+
+
 var $text = document.querySelector('.btn-glitch-active'),
     $filter = document.querySelector('.svg-sprite'),
     $turb = $filter.querySelector('#filter feTurbulence'),

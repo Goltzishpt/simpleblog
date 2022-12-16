@@ -38,7 +38,7 @@
                         </filter>
                     </defs>
                 </svg>
-                <button class="btn btn-small btn-dark btn-glitch goltzButton" type="submit", name="post_id", value="{{ post.id }}">🖤 {{ total_likes }}</button>
+                <button class="btn btn-small btn-dark btn-glitch goltzButton" type="submit" name="post_id" value="{{ post.id }}">🖤 {{ total_likes }}</button>
             {% else %}
                 <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
                     <defs>
@@ -48,7 +48,7 @@
                         </filter>
                     </defs>
                 </svg>
-                <button class="btn btn-small btn-clear btn-light btn-glitch goltzButton" type="submit", name="post_id", value="{{ post.id }}">🤍 {{ total_likes }}</button>
+                <button class="btn btn-small btn-clear btn-light btn-glitch goltzButton" type="submit" name="post_id" value="{{ post.id }}">🤍 {{ total_likes }}</button>
             {% endif %}
             {% else %}
             <small><a href="{% url 'login' %}">Login</a> to like</small>

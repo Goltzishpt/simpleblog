@@ -6,7 +6,6 @@ from slugify import slugify
 from PIL import Image
 
 
-
 class Category(models.Model):
     name = models.CharField(max_length=15, unique=True, default='world')
     slug = models.SlugField()
@@ -56,9 +55,9 @@ class Profile(models.Model):
 
 # on_delete=models.CASCADE - при удалении пользователя удаляет все его сообщения автоматически
 class Post(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=30)
     header_image = models.ImageField(null=True, blank=True, upload_to='images/')
-    title_tag = models.CharField(max_length=255)
+    title_tag = models.CharField(max_length=70)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
     post_date = models.DateTimeField(auto_now_add=True)

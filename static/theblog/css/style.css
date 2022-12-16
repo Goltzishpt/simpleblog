@@ -1,14 +1,29 @@
 /* glitch h1 */
 
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap");
- body {
+body {
     font-family: 'Montserrat', sans-serif !important;
     background-image: url('../images/sep09.jpg') !important;
     background-size: cover;
     background-attachment: fixed;
-  font-family: 'Cyber', sans-serif;
+    font-family: 'Cyber', sans-serif;
 }
 
+
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:link {
+    text-decoration: none;
+    color: #fff;
+}
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}
 
  .glitch {
 	 animation: glitch-skew 1s infinite linear alternate-reverse;
@@ -17,6 +32,7 @@
 	 font-size: calc(2rem + 1vw);
 	 letter-spacing: 0.5em;
 	 position: relative;
+	 margin: 20px;
 }
  .glitch::before {
 	 animation: glitch-anim 5s infinite linear alternate-reverse;
@@ -300,7 +316,6 @@ width: 60px:
 }
 
 .btn-clear {
-
   background-color: transparent;
 
 }
@@ -311,14 +326,13 @@ width: 60px:
 }
 
 .btn-clear1 {
-
   background-color: transparent;
 
 }
 .btn-clear1:hover {
-  background-image: linear-gradient(to right, rgba(25, 5, 40, .2) 0%, rgba(25, 5, 30, .85) 100%), url(../images/outrun-vaporwave-hd-wallpaper-thumb.jpg);
-  background-color: #121212;
+  background-image: linear-gradient(to right, rgba(25, 5, 40, .2) 0%, rgba(25, 5, 30, .85) 100%), url(../images/jack-hunter-1L4E_lsIb9Q-unsplash2.png);
   color: #fff;
+  border-radius: 5px;
 
 }
 .btn-clear.btn-light {
@@ -326,6 +340,10 @@ width: 60px:
   color: #fff;
 }
 
+.btn-clear1.btn-light {
+  border-color: #fff;
+  color: #fff;
+}
 /* line */
 .btn-clear.btn-light:hover {
   color: #121212;
@@ -456,8 +474,9 @@ overflow: hidden;
 .darkMatteGlass {
     height: 350px;
     width: 100%;
-    background-image: linear-gradient(to right, rgba(25, 5, 40, .5) 0%, rgba(25, 5, 30, .85) 100%), url(../images/33347022.png);
+    background-image: linear-gradient(to right, rgba(25, 5, 40, .3) 0%, rgba(25, 5, 30, .85) 100%), url(../images/33347022.png);
     filter: blur(1px);
+    color: #fff;
 }
 
 .headerBlur {
@@ -470,12 +489,108 @@ overflow: hidden;
         position: absolute;
       }
 
-.wrapper{
-        background: rgba(255, 255, 255, 0.500);
-        backdrop-filter: blur(4px);
-        height: 350px;
-        width: 300px;
-        border-radius: 15px;
-        border: 1px solid rgba(43, 43, 43, 0.568);
-      }
+.wrapperCard {
+    background: rgba(170, 170, 170, 0.500);
+    backdrop-filter: blur(3px);
+    height: 370px;
+    width: 300px;
+    margin:0px;
+    border: 1px solid rgba(43, 43, 43, 0.568);
+    border-radius: 9px
+    text-decoration-color: #fff;
+
+}
+
+.linkPostStyle {
+    background: rgba(255, 255, 255, 0.500);
+    backdrop-filter: blur(1px);
+    position: relative;
+    text-align: left;
+    padding: 10px 15px 15px 15px;
+    margin: 10px 10px 15px 7px;
+    border: 1px solid rgba(43, 43, 43, 0.568);
+    border-radius: 5px
+
+}
+/* rgba(255, 255, 255, 0.500) */
+.linkButton {
+    background: transparent;
+    font-size: 100%;
+    color: #fff;
+    height: 205px;
+    width: 265px;
+    border: 1px solid rgba(140, 140, 140, 0.500);
+    border-radius: 5px;
+    position: relative;
+    padding: 10px 25px 10px 25px;
+    text-align: left;
+}
+
+
+.linkNameButton {
+    background: transparent;
+    font-size: 100%;
+    color: #fff;
+    height: 70px;
+    width: 265px;
+    border: 1px solid rgba(140, 140, 140, 0.500);
+    border-radius: 5px;
+    position: relative;
+    padding: 10px 10px 10px 25px;
+    margin: -5px 0 3px 0;
+    text-align:left;
+}
+
+
+.linkCatButton {
+    background: transparent;
+    font-size: 100%;
+    color: #fff;
+    height: 30px;
+    width: 265px;
+    border: 1px solid rgba(140, 140, 140, 0.500);
+    border-radius: 5px;
+    position: relative;
+    margin: 3px 0 3px 0;
+    text-align: center;
+    padding:2px 0 0 0;
+}
+
+.linkEditButton {
+    background: transparent;
+    font-size: 100%;
+    color: #fff;
+    height: 30px;
+    width: 122.5px;
+    border: 1px solid rgba(140, 140, 140, 0.500);
+    border-radius: 5px;
+    position: relative;
+    margin: 0 20px 0 0;
+    padding:1px 0 0 0;
+    text-align: center;
+}
+
+.linkDeleteButton {
+    background: transparent;
+    font-size: 100%;
+    color: #fff;
+    height: 30px;
+    width: 122.5px;
+    border: 1px solid rgba(140, 140, 140, 0.500);
+    border-radius: 5px;
+    position: relative;
+    margin: 0;
+    padding:1px 0 0 0;
+    text-align: center;
+    inline: flex;
+}
+
+.btn-group button {
+
+}
+
+
+
+
+
 

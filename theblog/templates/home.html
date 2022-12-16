@@ -7,14 +7,13 @@
 <h1 class="glitch" data-text="Posts">Posts</h1>
 
 
+
+
 <div class="row row-cols row-cols-md g-4">
-     {% for post in object_list %}
-      <div class="col">
-          <div class="card wrapper">
-<!--                <img src="{% static 'theblog/images/33347022.png' %}" class="card-img" alt="...">-->
-
-
-               <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    {% for post in object_list %}
+        <div class="col">
+            <div class="card wrapperCard">
+                <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
                 <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
                     <defs>
                         <filter id="filter">
@@ -23,25 +22,39 @@
                         </filter>
                     </defs>
                 </svg>
-
                 <div class="card-img-overlay absolute btn-small btn-clear1 btn-light btn-glitch">
+                        <div class="linkNameButton" >
 
-
-
-
-
-                    <h5 class="card-title"><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h5>
-                    <p class="card-text">{{ post.snippet }}</p>
-                    <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                    <hr/>
-                    {{ post.author.first_name }} {{ post.author.last_name }} -
-                    <a href="{% url 'category' post.category.slug %}">[{{ post.category }}]</a>
-                    - {{ post.post_date }}
+                            <a href="{% url 'show_profile_page' post.author.id %}">
+                                Author: <br>
+                                {{ post.author.first_name }} {{ post.author.last_name }}
+                            </a>
+                        </div>
+                    <form  action="{% url 'article-detail' post.pk %}" method="post">
+                        {% csrf_token %}
+                        <button class="linkButton" name="post.id" value="{{ post.pk }}">
+                            {{ post.post_date }}
+                            <hr>
+                            {{ post.title }}
+                            <hr/>
+                            {{ post.snippet }}
+                        </button>
+                    </form>
+                    <div class="linkCatButton">
+                        <p class="card-text"><small><a href="{% url 'category' post.category.slug %}">
+                            Category: {{ post.category }}
+                        </a></small></p>
+                    </div>
                     {% if user.is_authenticated %}
                     {% if user.id == post.author.id %}
-                    <hr/>
-                    <small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small>
-                    <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
+                    <div class="btn-group">
+                        <div class="linkEditButton">
+                            <span><small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small></span>
+                        </div>
+                        <div class="linkDeleteButton">
+                            <span><small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small></span>
+                        </div>
+                    </div>
                     {% endif %}
                     {% endif %}
                 </div>

@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post, Category, Comment
 from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 
 def LikeView(request, pk):
@@ -16,6 +16,7 @@ def LikeView(request, pk):
         post.likes.add(request.user)
         liked = True
     return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
+
 
 
 class HomeView(ListView):
@@ -64,6 +65,11 @@ class ArticleDetailView(DetailView):
         context['total_likes'] = total_likes
         context['liked'] = liked
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 
 
 class AddPostView(CreateView):
