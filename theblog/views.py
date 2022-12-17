@@ -76,6 +76,19 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
+    success_url = reverse_lazy('article-details')
+
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AddPostView, self).get_context_data(*args, **kwargs)
+        context['cat_menu'] = cat_menu
+        return context
+
+
+
+    def add_post(request):
+        form = PostForm()
+        return render(request, 'add_post.html', {'form': form})
 
 
 class AddCommentView(CreateView):
@@ -94,6 +107,9 @@ class AddCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields = ['name']
+
+
+
 
 
 class UpdatePostView(UpdateView):

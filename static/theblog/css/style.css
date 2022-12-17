@@ -271,7 +271,8 @@ a:hover {
 /* button bitch glitch */
 
 .goltzButton {
-width: 60px:
+    width: 60px !important:
+
 }
 
 .btn {
@@ -320,7 +321,7 @@ width: 60px:
 
 }
 .btn-clear:hover {
-  background-color: #121212;
+  background-color: transparent;
   color: #fff;
 
 }
@@ -393,38 +394,17 @@ width: 60px:
   animation-timing-function: step-end;
 }
 
-body {
-  margin: 0;
-}
 
-.body-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 100vh;
-}
-.body-section .dark {
-  background-color: #121212;
-}
-.body-section .half {
-  flex: 0 0 100%;
-  max-height: 50%;
-  min-height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 @keyframes colorshift-red {
   0%, 7% {
-    background-color: #ff536b;
+    background-color: rgba(243, 27, 128, 0.8);
   }
   8%, 18% {
     background-color: transparent;
   }
   19% {
-    background-color: #ff536b;
+    background-color: rgba(243, 27, 128, 0.8);
     width: 2px;
   }
   23%, 100% {
@@ -433,13 +413,13 @@ body {
 }
 @keyframes colorshift-blue {
   0%, 7% {
-    background-color: #3ffeff;
+    background-color:  rgba(27, 110, 243, 0.8);
   }
   8%, 18% {
     background-color: transparent;
   }
   19% {
-    background-color: #3ffeff;
+    background-color:rgba(27, 110, 243, 0.8);
     width: 2px;
   }
   23%, 100% {
@@ -449,23 +429,22 @@ body {
 
 /* matte glass effect */
 .matteGlass {
-background: inherit;
-
-top: 50px;
-left: 50px;
-overflow: hidden;
+    background: inherit;
+    top: 50px;
+    left: 50px;
+    overflow: hidden;
 }
 
 .matteGlass:before {
-  content: '';
-  width: 300px;
-  height: 400px;
-  background: inherit;
-  position: absolute;
-  left: -25px;
-  top: -25px;
-  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.3);
-  filter: blur(10px);
+    content: '';
+    width: 300px;
+    height: 400px;
+    background: inherit;
+    position: absolute;
+    left: -25px;
+    top: -25px;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.3);
+    filter: blur(10px);
 }
 
 
@@ -484,14 +463,10 @@ overflow: hidden;
      backdrop-filter: blur(4px);
 }
 
-
-.content{
-        position: absolute;
-      }
-
+/* style for card in home page */
 .wrapperCard {
-    background: rgba(170, 170, 170, 0.500);
-    backdrop-filter: blur(3px);
+    background: rgba(170, 170, 170, 0.400);
+    backdrop-filter: blur(1px);
     height: 370px;
     width: 300px;
     margin:0px;
@@ -512,6 +487,7 @@ overflow: hidden;
     border-radius: 5px
 
 }
+
 /* rgba(255, 255, 255, 0.500) */
 .linkButton {
     background: transparent;
@@ -577,13 +553,45 @@ overflow: hidden;
     height: 30px;
     width: 122.5px;
     border: 1px solid rgba(140, 140, 140, 0.500);
-    border-radius: 5px;
     position: relative;
     margin: 0;
     padding:1px 0 0 0;
     text-align: center;
     inline: flex;
+    border-radius: 5px;
 }
+/* .linkDeleteButton .linkEditButton .linkCatButton .linkNameButton
+.linkButton */
+.linkDeleteButton:hover {
+    border: 1px solid rgba(140, 140, 140, 1);
+    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    color: #fff;
+}
+
+.linkEditButton:hover {
+    border: 1px solid rgba(140, 140, 140, 1);
+    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    color: #fff;
+}
+
+.linkCatButton:hover {
+    border: 1px solid rgba(140, 140, 140, 1);
+    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    color: #fff;
+}
+
+.linkNameButton:hover {
+    border: 1px solid rgba(140, 140, 140, 1);
+    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    color: #fff;
+}
+
+.linkButton:hover {
+    border: 1px solid rgba(140, 140, 140, 1);
+    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    color: #fff;
+}
+
 
 .btn-group button {
 
@@ -591,6 +599,131 @@ overflow: hidden;
 
 
 
+/* style for form control */
 
+/*.formControl {
+    background: rgba(255, 255, 255, 0.500);
+    color:#717171;
+    box-sizing: border-box;
+    display: block;
+    height: 35px;
+    width: 100%;
+    border: 1px solid rgba(140, 140, 140, 0.500);
+    border-radius: 5px;
+}*/
+/* задняя строка, тут меняется текст хуйни с картикной,
+бордер*/
+.formControl {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  margin: 20px;
+  height: 100%
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: rgba(170, 170, 170, 0.400);
+  background-clip: padding-box;
+  border: 1px solid rgba(170, 170, 170, 0.800);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* цвет внутри картинки текст*/
+@media (prefers-reduced-motion: reduce) {
+  .formControl {
+   color: #fff;
+   transition: none;
+  }
+}
+.formControl[type=file] {
+  overflow: hidden;
+}
+.formControl[type=file]:not(:disabled):not([readonly]) {
+  cursor: pointer;
+}
+
+/*здесь меняется фон при фокусе и тень */
+.formControl:focus {
+  color: #fff;
+  background-color: rgba(170, 170, 170, 0.800);
+  border-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(110, 110, 110, 0.4);
+}
+
+.formControl::-webkit-date-and-time-value {
+  height: 1.5em;
+}
+/* цвет плейсхолдера */
+.formControl::-moz-placeholder {
+  color: #717171;
+  opacity: 1;
+}
+.formControl::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+.formControl:disabled {
+  opacity: 1;
+}
+.formControl::-webkit-file-upload-button {
+  padding: 0.375rem 0.75rem;
+  margin: -0.375rem -0.75rem;
+  -webkit-margin-end: 0.75rem;
+  margin-inline-end: 0.75rem;
+  color: #fff;
+  background-color: #e9ecef;
+  pointer-events: none;
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  border-inline-end-width: 1px;
+  border-radius: 0;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.formControl::file-selector-button {
+  padding: 0.375rem 0.75rem;
+  margin: -0.375rem -0.75rem;
+  -webkit-margin-end: 0.75rem;
+  margin-inline-end: 0.75rem;
+  color: red;
+  background-color: #e9ecef;
+  pointer-events: none;
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  border-inline-end-width: 1px;
+  border-radius: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .formControl::-webkit-file-upload-button {
+    color: #fff;
+    background: rgba(170, 170, 170, 0.800);
+    -webkit-transition: none;
+    transition: none;
+    size: 100%;
+  }
+  .formControl::file-selector-button {
+    transition: none;
+  }
+}
+.formControl:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+    background-color: #dde0e3;
+    color: #717171;
+}
+.formControl:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: #dde0e3;
+    color: #717171;
+}
+
+.formArea {
+margin: 10px -10px -10px -10px;
+}
 
 

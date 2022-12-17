@@ -5,26 +5,70 @@
 
 {% if user.is_authenticated %}
 
-    <h1 class="glitch" data-text="Add Post...">Add Post...</h1>
-    <br/><br/>
-    <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-            <input>
-        <button class="btn btn-small btn-dark btn-glitch goltzButton">Add Post</button>
-        </form>
-    </div>
 
-    <script>
-        var name = "{{ user.id }}";
-        document.getElementById("elder").value
-                = name;
-    </script>
+<h1 class="glitch" style="margin: 20px" data-text="Add Post">Add Post</h1>
+
+
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="formArea">
+        {% csrf_token %}
+<!--        {{ form.media }}-->
+<!--        {{ form.as_p }}-->
+<!--        enter the theme -->
+        <input class="formControl" placeholder="Post title">
+<!--        enter the tag -->
+        <input class="formControl" placeholder="Post tag">
+<!--        choice the category -->
+
+        <select class="formControl" name="category" required>
+            <option value="none" hidden="">Select a category</option>
+            {% for item in cat_menu %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select>
+<!--        enter the body text-->
+        <textarea class="formControl" placeholder="Your text"  style="height: 200px;"></textarea>
+<!--        enter the snippet -->
+        <input class="formControl" placeholder="A snippet" style="height: 80px">
+<!--        add the photo -->
+         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+            <defs>
+                <filter id="filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+                </filter>
+            </defs>
+        </svg>
+        <div class="mb-3">
+                <label for="formFile" style="color: #fff; margin: 0 0 0 20px;">Add photo</label>
+                <input name="profile_pic" class="formControl" value="Add photo" type="file" multiple="multiple" placeholder="Add photo" id="formFile">
+            </div>
+<!--        button the confirmation -->
+       <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+            <defs>
+                <filter id="filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+                </filter>
+            </defs>
+        </svg>
+        <button class="btn btn-clear btn-light btn-glitch goltzButton" style="margin: 10px 0 20px 20px; float: right;">Add</button>
+</div>
+    </form>
+<hr/>
+
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("elder").value
+            = name;
+</script>
 {% else %}
 
 You`re not allowed here! (and you know it...)
 
 {% endif %}
+
 {% endblock %}

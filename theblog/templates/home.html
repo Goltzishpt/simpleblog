@@ -4,15 +4,15 @@
 {% load static %}
 {% block content %}
 
+
+
+
 <h1 class="glitch" data-text="Posts">Posts</h1>
-
-
-
 
 <div class="row row-cols row-cols-md g-4">
     {% for post in object_list %}
         <div class="col">
-            <div class="card wrapperCard">
+            <div class="card wrapperCard" tabindex="0">
                 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
                 <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
                     <defs>
@@ -22,14 +22,13 @@
                         </filter>
                     </defs>
                 </svg>
-                <div class="card-img-overlay absolute btn-small btn-clear1 btn-light btn-glitch">
-                        <div class="linkNameButton" >
-
-                            <a href="{% url 'show_profile_page' post.author.id %}">
-                                Author: <br>
-                                {{ post.author.first_name }} {{ post.author.last_name }}
-                            </a>
-                        </div>
+                <div class="card-img-overlay btn-clear1" tabindex="0">
+                    <div class="linkNameButton" >
+                        <a href="{% url 'show_profile_page' post.author.id %}">
+                            Author: <br>
+                            {{ post.author.first_name }} {{ post.author.last_name }}
+                        </a>
+                    </div>
                     <form  action="{% url 'article-detail' post.pk %}" method="post">
                         {% csrf_token %}
                         <button class="linkButton" name="post.id" value="{{ post.pk }}">
@@ -47,12 +46,12 @@
                     </div>
                     {% if user.is_authenticated %}
                     {% if user.id == post.author.id %}
-                    <div class="btn-group">
+                    <div class="btn-group" tabindex="0">
                         <div class="linkEditButton">
                             <span><small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small></span>
                         </div>
-                        <div class="linkDeleteButton">
-                            <span><small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small></span>
+                        <div class="linkDeleteButton" tabindex="0">
+                            <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
                         </div>
                     </div>
                     {% endif %}
