@@ -7,7 +7,7 @@ from PIL import Image
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=15, unique=True, default='world')
+    name = models.CharField(max_length=15, unique=True, default='')
     slug = models.SlugField()
 
     def __str__(self):

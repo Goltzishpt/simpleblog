@@ -9,9 +9,9 @@ body {
     font-family: 'Cyber', sans-serif;
 }
 
-textarea {
-    visibility: initial !important;
-    display: block !important;
+
+label {
+    color: #fff !important;
 }
 a {
     text-decoration: none;
