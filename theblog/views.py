@@ -18,7 +18,6 @@ def LikeView(request, pk):
     return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
 
 
-
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
@@ -76,7 +75,7 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    success_url = reverse_lazy('article-details')
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
@@ -84,32 +83,27 @@ class AddPostView(CreateView):
         context['cat_menu'] = cat_menu
         return context
 
-
-
     def add_post(request):
-        form = PostForm()
-        return render(request, 'add_post.html', {'form': form})
+        form = Post()
+        return HttpResponse(request, 'add_post.html', {'form': form})
+
 
 
 class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
-
-    success_url = reverse_lazy('home')
 
 
 class AddCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields = ['name']
-
-
-
 
 
 class UpdatePostView(UpdateView):

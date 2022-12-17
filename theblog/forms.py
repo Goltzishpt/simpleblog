@@ -6,13 +6,17 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'title_tag', 'author', 'category', 'body', 'snippet', 'header_image')
+        labels = {'title': '', 'title_tag': '', 'author': '', 'category': 'Select category', 'body': '', 'snippet': '', 'header_image': ''}
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your text...'}),
-            'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
-            'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'elder', 'type': 'hidden'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'}),
-            'snippet': forms.Textarea(attrs={'class': 'form-control', 'value': 'Click Link Above To Read Blog Post...'})
+            'title': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter title'}),
+            'title_tag': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter title tag'}),
+            'author': forms.TextInput(attrs={'class': 'formControl', 'value': '', 'id': 'elder', 'type': 'hidden'}),
+            'category': forms.Select(attrs={'class': 'formControl', 'placeholder': 'Select'}),
+            'body': forms.Textarea(attrs={'class': 'formControl', 'placeholder': 'Enter your text'}),
+            'snippet': forms.Textarea(attrs={'class': 'formControl', 'value': 'Click Link Above To Read Blog Post...'}),
+            'header_image': forms.FileInput(attrs={'class': 'formControl'})
+
         }
 
         def __init__(self, *args, **kwargs):

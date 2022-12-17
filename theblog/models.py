@@ -59,11 +59,12 @@ class Post(models.Model):
     header_image = models.ImageField(null=True, blank=True, upload_to='images/')
     title_tag = models.CharField(max_length=70)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = RichTextField(blank=True, null=True)
+    body = models.TextField(blank=True, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
     snippet = models.CharField(max_length=50, default='Click Link Above To Read Blog Post...')
     likes = models.ManyToManyField(User, related_name='blog_posts')
+
 
     def total_likes(self):
         return self.likes.count

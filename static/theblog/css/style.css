@@ -9,8 +9,10 @@ body {
     font-family: 'Cyber', sans-serif;
 }
 
-
-
+textarea {
+    visibility: initial !important;
+    display: block !important;
+}
 a {
     text-decoration: none;
     color: #fff;
@@ -597,20 +599,6 @@ a:hover {
 
 }
 
-
-
-/* style for form control */
-
-/*.formControl {
-    background: rgba(255, 255, 255, 0.500);
-    color:#717171;
-    box-sizing: border-box;
-    display: block;
-    height: 35px;
-    width: 100%;
-    border: 1px solid rgba(140, 140, 140, 0.500);
-    border-radius: 5px;
-}*/
 /* задняя строка, тут меняется текст хуйни с картикной,
 бордер*/
 .formControl {
@@ -725,5 +713,6 @@ a:hover {
 .formArea {
 margin: 10px -10px -10px -10px;
 }
+
 
 
