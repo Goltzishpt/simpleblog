@@ -4,23 +4,28 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-
-    <h1>Create profile page</h1>
-    <br/><br/>
-    <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-        <button class="btn btn-secondary">Create Profile page</button>
-        </form>
+<h1 class="glitch" style="margin: 20px" data-text="Create profile page">Create profile page</h1>
+<form method="POST" enctype="multipart/form-data">
+    <div>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+            <defs>
+                <filter id="filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+                </filter>
+            </defs>
+        </svg>
+        <button class="btn btn-clear btn-light btn-glitch goltzButton" style="float: right; margin: 0 -20px 20px 0;">Create</button>
     </div>
-
-    <script>
-        var name = "{{ user.id }}";
-        document.getElementById("elder").value
-                = name;
-    </script>
+</form>
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("elder").value
+            = name;
+</script>
 {% else %}
 
 You`re not allowed here! (and you know it...)

@@ -1,17 +1,92 @@
-/* glitch h1 */
+
 
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap");
 body {
     font-family: 'Montserrat', sans-serif !important;
-    background-image: url('../images/sep09.jpg') !important;
+    background-image: url('../images/black-smooth-textured-paper-background.jpg') !important;
     background-size: cover;
     background-attachment: fixed;
+    color: #fff;
     font-family: 'Cyber', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
+.main {
+    position: relative;
+    min-height: 100%;
+    height: auto !important;
+    _height: 100%;
+}
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    z-index: 6;
+    height: 54px;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(40, 40, 40, .950);
+    color: #717171;
+    text-align: center;
+    padding: 15px
+}
+.footer-margin {
+    position: static;
+    width: auto;
+    border: 0px dotted maroon;
+    clear: both;
+    margin: 0;
+    padding: 0;
+    height: 1;
+    font-size: 1px;
+    height: 50px;
+}
+
+.footerFirstLine {
+    color: #717171 !important;
+}
+
+.iconInst {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/icons8-instagram-48.png');
+}
+.iconTelegram {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/icons8-телеграмма-app-48.png') ;
+}
+
+.iconLinkedIn {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/icons8-линкедин-48.png') ;
+}
 
 label {
     color: #fff !important;
+    margin: 0 0 0 5px;
 }
 a {
     text-decoration: none;
@@ -27,6 +102,7 @@ a:hover {
     color: #fff;
 }
 
+/* glitch h1 */
  .glitch {
 	 animation: glitch-skew 1s infinite linear alternate-reverse;
 	 color: white;
@@ -268,8 +344,6 @@ a:hover {
 }
 
 
-
-
 /* button bitch glitch */
 
 .goltzButton {
@@ -278,155 +352,153 @@ a:hover {
 }
 
 .btn {
-  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -ms-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font-family: "Roboto mono", sans-serif;
-  font-weight: 500;
-  border: 1px solid #121212;
-  line-height: 1.5;
-  font-size: em(14px);
-  padding: 16px;
-  width: 100%;
-  display: block;
-  cursor: pointer;
-  position: relative;
-  background-color: #fff;
-  overflow: hidden;
-  outline: none;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: bottom;
+    -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: "Roboto mono", sans-serif;
+    font-weight: 500;
+    border: 1px solid #121212;
+    line-height: 1.5;
+    font-size: em(14px);
+    padding: 16px;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: bottom;
 
 }
 .btn:focus {
-  outline: none;
+    outline: none;
 }
 @media screen and (min-width: 30em) {
-  .btn {
-    max-width: 100px;
-  }
-  .btn.btn-small {
-    max-width: 90px;
-  }
+    .btn {
+        max-width: 100px;
+    }
+    .btn.btn-small {
+        max-width: 90px;
+    }
 }
 @media screen and (min-width: 40em) {
-  .btn {
-    display: inline-block;
-  }
+    .btn {
+        display: inline-block;
+    }
 }
 
 .btn-clear {
-  background-color: transparent;
+    background-color: transparent;
 
 }
 .btn-clear:hover {
-  background-color: transparent;
-  color: #fff;
+    background-color: transparent;
+    color: #fff;
 
 }
 
 .btn-clear1 {
-  background-color: transparent;
+    background-color: transparent;
 
 }
 .btn-clear1:hover {
-  background-image: linear-gradient(to right, rgba(25, 5, 40, .2) 0%, rgba(25, 5, 30, .85) 100%), url(../images/jack-hunter-1L4E_lsIb9Q-unsplash2.png);
-  color: #fff;
-  border-radius: 5px;
+    background-image: linear-gradient(to right, rgba(25, 5, 40, .2) 0%, rgba(25, 5, 30, .85) 100%), url(../images/12153.jpg);
+    color: #fff;
+    border-radius: 5px;
 
 }
 .btn-clear.btn-light {
-  border-color: #fff;
-  color: #fff;
+    border-color: #fff;
+    color: #fff;
 }
 
 .btn-clear1.btn-light {
-  border-color: #fff;
-  color: #fff;
+    border-color: #fff;
+    color: #fff;
 }
 /* line */
 .btn-clear.btn-light:hover {
-  color: #121212;
-  background-color: #fff;
+    color: #121212;
+    background-color: #fff;
 }
-
 .btn-light:hover {
-  background-color: #121212;
-  color: #fff;
+    background-color: #121212;
+    color: #fff;
 }
 
 .btn-dark {
-  background-color: #fff;
-  color: #000;
-  border-color: #fff;
-
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
 }
 .btn-dark:hover {
-  color: #807f83;
+    color: #807f83;
 }
 
 .btn-glitch {
-  transform: translateZ(0);
-  overflow: visible;
+    transform: translateZ(0);
+    overflow: visible;
 }
 .btn-glitch.btn-glitch-active {
-  -webkit-filter: url("#filter");
-  filter: url("#filter");
+    -webkit-filter: url("#filter");
+    filter: url("#filter");
 }
 .btn-glitch.btn-glitch-active::after, .btn-glitch.btn-glitch-active::before {
-  content: "";
-  width: 1px;
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
+    content: "";
+    width: 1px;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
 }
 .btn-glitch.btn-glitch-active::after {
-  left: -2px;
-  background-color: #ff536b;
-  animation: colorshift-red 2.6s infinite;
-  animation-timing-function: step-end;
+    left: -2px;
+    background-color: #ff536b;
+    animation: colorshift-red 2.6s infinite;
+    animation-timing-function: step-end;
 }
 .btn-glitch.btn-glitch-active::before {
-  right: -2px;
-  background-color: #3ffeff;
-  animation: colorshift-blue 2.6s infinite;
-  animation-timing-function: step-end;
+    right: -2px;
+    background-color: #3ffeff;
+    animation: colorshift-blue 2.6s infinite;
+    animation-timing-function: step-end;
 }
 
 
 
 @keyframes colorshift-red {
-  0%, 7% {
-    background-color: rgba(243, 27, 128, 0.8);
-  }
-  8%, 18% {
-    background-color: transparent;
-  }
-  19% {
-    background-color: rgba(243, 27, 128, 0.8);
-    width: 2px;
-  }
-  23%, 100% {
-    background-color: transparent;
-  }
+    0%, 7% {
+        background-color: rgba(243, 27, 128, 0.8);
+    }
+    8%, 18% {
+        background-color: transparent;
+    }
+    19% {
+        background-color: rgba(243, 27, 128, 0.8);
+        width: 2px;
+    }
+    23%, 100% {
+        background-color: transparent;
+    }
 }
 @keyframes colorshift-blue {
-  0%, 7% {
-    background-color:  rgba(27, 110, 243, 0.8);
-  }
-  8%, 18% {
-    background-color: transparent;
-  }
-  19% {
-    background-color:rgba(27, 110, 243, 0.8);
-    width: 2px;
-  }
-  23%, 100% {
-    background-color: transparent;
-  }
+    0%, 7% {
+        background-color:  rgba(27, 110, 243, 0.8);
+    }
+    8%, 18% {
+        background-color: transparent;
+    }
+    19% {
+        background-color:rgba(27, 110, 243, 0.8);
+        width: 2px;
+    }
+    23%, 100% {
+        background-color: transparent;
+    }
 }
 
 /* matte glass effect */
@@ -461,8 +533,14 @@ a:hover {
 }
 
 .headerBlur {
-     background: rgba(150, 150, 150, 0.500);
-     backdrop-filter: blur(4px);
+    background: rgba(150, 150, 150, 0.800);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid rgba(150, 150, 150, 0.800);
+}
+
+.headerBlur:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px 0.80rem rgba(200, 110, 160, 0.6);
 }
 
 /* style for card in home page */
@@ -475,8 +553,12 @@ a:hover {
     border: 1px solid rgba(43, 43, 43, 0.568);
     border-radius: 9px
     text-decoration-color: #fff;
-
 }
+.wrapperCard:hover {
+    border: 1px solid rgba(255, 240, 255, 0.9);
+    box-shadow: 0 0 10px 0.80rem rgba(200, 110, 160, 0.6);
+}
+
 
 .linkPostStyle {
     background: rgba(255, 255, 255, 0.500);
@@ -566,31 +648,31 @@ a:hover {
 .linkButton */
 .linkDeleteButton:hover {
     border: 1px solid rgba(140, 140, 140, 1);
-    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    box-shadow: 0 0 10px 0.10rem rgba(110, 110, 110, 0.6);
     color: #fff;
 }
 
 .linkEditButton:hover {
     border: 1px solid rgba(140, 140, 140, 1);
-    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    box-shadow: 0 0 10px 0.10rem rgba(110, 110, 110, 0.6);
     color: #fff;
 }
 
 .linkCatButton:hover {
     border: 1px solid rgba(140, 140, 140, 1);
-    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    box-shadow: 0 0 10px 0.10rem rgba(110, 110, 110, 0.6);
     color: #fff;
 }
 
 .linkNameButton:hover {
     border: 1px solid rgba(140, 140, 140, 1);
-    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    box-shadow: 0 0 10px 0.10rem rgba(110, 110, 110, 0.6);
     color: #fff;
 }
 
 .linkButton:hover {
     border: 1px solid rgba(140, 140, 140, 1);
-    box-shadow: 0 0 0 0.10rem rgba(110, 110, 110, 0.6);
+    box-shadow: 0 0 10px 0.10rem rgba(110, 110, 110, 0.6);
     color: #fff;
 }
 
@@ -602,108 +684,111 @@ a:hover {
 /* задняя строка, тут меняется текст хуйни с картикной,
 бордер*/
 .formControl {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  margin: 20px;
-  height: 100%
-  font-weight: 400;
-  line-height: 1.5;
-  background-color: rgba(170, 170, 170, 0.400);
-  background-clip: padding-box;
-  border: 1px solid rgba(170, 170, 170, 0.800);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0.375rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    height: 100%
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: rgba(170, 170, 170, 0.400);
+    background-clip: padding-box;
+    border: 1px solid rgba(170, 170, 170, 0.800);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /* цвет внутри картинки текст*/
 @media (prefers-reduced-motion: reduce) {
-  .formControl {
-   color: #fff;
-   transition: none;
-  }
+    .formControl {
+        color: #fff;
+        transition: none;
+    }
 }
 .formControl[type=file] {
-  overflow: hidden;
+    overflow: hidden;
 }
 .formControl[type=file]:not(:disabled):not([readonly]) {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /*здесь меняется фон при фокусе и тень */
 .formControl:focus {
-  color: #fff;
-  background-color: rgba(170, 170, 170, 0.800);
-  border-color: #fff;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(110, 110, 110, 0.4);
+    color: #fff;
+    background-color: rgba(170, 170, 170, 0.800);
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px 0.50rem rgba(200, 110, 160, 0.6);
 }
-
+.formControl:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px 0.50rem rgba(200, 110, 160, 0.6);
+}
 .formControl::-webkit-date-and-time-value {
-  height: 1.5em;
+    height: 1.5em;
 }
 /* цвет плейсхолдера */
 .formControl::-moz-placeholder {
-  color: #717171;
-  opacity: 1;
+    color: #717171;
+    opacity: 1;
 }
 .formControl::placeholder {
-  color: #fff;
-  opacity: 1;
+    color: #fff;
+    opacity: 1;
 }
 .formControl:disabled {
-  opacity: 1;
+    opacity: 1;
 }
 .formControl::-webkit-file-upload-button {
-  padding: 0.375rem 0.75rem;
-  margin: -0.375rem -0.75rem;
-  -webkit-margin-end: 0.75rem;
-  margin-inline-end: 0.75rem;
-  color: #fff;
-  background-color: #e9ecef;
-  pointer-events: none;
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
-  border-inline-end-width: 1px;
-  border-radius: 0;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 0.375rem 0.75rem;
+    margin: -0.375rem -0.75rem;
+    -webkit-margin-end: 0.75rem;
+    margin-inline-end: 0.75rem;
+    color: #fff;
+    background-color: #e9ecef;
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: 1px;
+    border-radius: 0;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .formControl::file-selector-button {
-  padding: 0.375rem 0.75rem;
-  margin: -0.375rem -0.75rem;
-  -webkit-margin-end: 0.75rem;
-  margin-inline-end: 0.75rem;
-  color: red;
-  background-color: #e9ecef;
-  pointer-events: none;
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
-  border-inline-end-width: 1px;
-  border-radius: 0;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 0.375rem 0.75rem;
+    margin: -0.375rem -0.75rem;
+    -webkit-margin-end: 0.75rem;
+    margin-inline-end: 0.75rem;
+    color: red;
+    background-color: #e9ecef;
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: 1px;
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .formControl::-webkit-file-upload-button {
-    color: #fff;
-    background: rgba(170, 170, 170, 0.800);
-    -webkit-transition: none;
+    .formControl::-webkit-file-upload-button {
+        color: #fff;
+        background: rgba(170, 170, 170, 0.800);
+        -webkit-transition: none;
+        transition: none;
+        size: 100%;
+    }
+    .formControl::file-selector-button {
     transition: none;
-    size: 100%;
-  }
-  .formControl::file-selector-button {
-    transition: none;
-  }
+    }
 }
 .formControl:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
     background-color: #dde0e3;
     color: #717171;
+
 }
 .formControl:hover:not(:disabled):not([readonly])::file-selector-button {
     background-color: #dde0e3;
@@ -711,8 +796,15 @@ a:hover {
 }
 
 .formArea {
-margin: 10px -10px -10px -10px;
+    margin: 10px -10px -10px -10px;
 }
 
+.passHidden {
+    font-size: 0;
+    color: transparent;
+}
 
+.DeleteEdit {
+    margin: 20px;
+}
 

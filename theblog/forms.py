@@ -6,7 +6,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'title_tag', 'author', 'category', 'body', 'snippet', 'header_image')
-        labels = {'title': '', 'title_tag': '', 'author': '', 'category': '', 'body': '', 'snippet': '', 'header_image': ''}
+        labels = {'title': '', 'title_tag': '', 'author': '', 'category': 'Select the category', 'body': '', 'snippet': '',
+                  'header_image': ''}
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter title'}),

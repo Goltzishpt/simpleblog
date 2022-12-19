@@ -12,8 +12,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Rubik+80s+Fade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Roboto+Slab:wght@100;200;300;400;
+        500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Montserrat:ital,wght@0,100;0,200;0,300;
+        0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:
+        wght@100;200;300;400;500;600;700;800;900&family=Rubik+80s+Fade&display=swap" rel="stylesheet">
 
 
 
@@ -22,13 +25,12 @@
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
     <link rel="stylesheet" href="{% static 'theblog/css/style.css' %}">
 
 
 </head>
-<body style="padding: 0;">
-
+<body>
+<div class="main">
     <nav class="navbar navbar-expand-lg navbar-dark headerBlur sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">My awesome blog!</a>
@@ -40,9 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-
                     <!-- Category menu code -->
-<!--                    {% if cat_menu %}-->
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Categories
@@ -51,16 +51,11 @@
                     <ul class="dropdown-menu">
                         <li>
                         {% for item in cat_menu %}
-                        <a class="dropdown-item" href="{% url 'category' item.slug %}">{{ item }}</a>
+                            <a class="dropdown-item" href="{% url 'category' item.slug %}">{{ item }}</a>
                         {% endfor %}
                         </li>
                     </ul>
                     </li>
-<!--                    {% else %}-->
-<!--                    <li class="nav-item">-->
-<!--                    <a class="nav-link" href="{% url 'category-list' %}">Categories</a>-->
-<!--                    </li>-->
-<!--                    {% endif %}-->
 
                     {% if user.is_authenticated %}
 
@@ -73,7 +68,6 @@
 
                 </ul>
                     {% else %}
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                     <a class="nav-link" href="{% url 'register' %}">Register</a>
@@ -88,6 +82,7 @@
 <!-- NAV BAR RIGHT -->
                 {% endif %}
                 {% if user.is_authenticated %}
+
                 <ul class="navbar-nav mb-2 mb-lg-0 me-5">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -118,6 +113,20 @@
     {% endblock %}
         </div>
     </div>
+</div>
+<div class="footer-margin"></div>
+<footer class="row">
+    <div class="footerFirstLine col">
+        <a href="https://www.instagram.com/greatgoltz/" style="color: #717171;"><i class="iconInst"></i></a>
+        <a href="https://t.me/greatgoltz"><i class="iconTelegram"></i></a>
+        <a href="https://www.linkedin.com/in/viktoriia-goltz-0b4814204"><i class="iconLinkedIn"></i></a>
+
+    </div>
+    <div class="footerFirstLine col">
+        <p>©2022 Great Goltz</p>
+    </div>
+</footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>

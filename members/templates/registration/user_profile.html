@@ -5,24 +5,24 @@
 
 <h1 class="glitch" data-text="User profile">User profile</h1>
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-        {% if page_user.profile_pic %}
-            <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start" alt="...">
-        {% else %}
-            <img src="{% static 'theblog/images/User-avatar.svg.png' %}" class="card-img">
-
-        {% endif %}
+<div class="formControl card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            {% if page_user.profile_pic %}
+                <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start" alt="...">
+            {% else %}
+                <img src="{% static 'theblog/images/User-avatar.svg.png' %}" class="card-img">
+            {% endif %}
+        </div>
     </div>
     <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">
+        <div class="card-body ">
+            <h5 class="card-title">
             {{ page_user.user.first_name }}
             {{ page_user.user.last_name }}
-        </h5>
+            </h5>
 
-        <p class="small text-muted">
+            <p class="small text-muted">
 
             {% if page_user.website_url %}
                 <a href="{{ page_user.website_url }}">Website</a>
@@ -39,44 +39,78 @@
             {% if page_user.pinterest_url %}
                 | <a href="{{ page_user.pinterest_url }}">Pinterest</a>
             {% endif %}
-        </p>
-        {% if page_user.bio %}
-            <p class="card-text">{{ page_user.bio }}</p>
-        {% else %}
-            <p class="card-text">{{ page_user.first_name }}`s bio is secret.</p>
-        {% endif %}
-      </div>
+            </p>
+            {% if page_user.bio %}
+                <p class="card-text">{{ page_user.bio }}</p>
+            {% else %}
+                <p class="card-text">{{ page_user.first_name }}`s bio is secret.</p>
+            {% endif %}
+        </div>
     </div>
-  </div>
 </div>
+
+
+
 
 <h1 class="glitch" data-text="{{ page_user.user.first_name }}`s posts">{{ page_user.user.first_name }}`s posts</h1>
 
 
-<div class="row row-cols-2 row-cols-md-4 g-4">
-  {% for post in posts %}
-      <div class="col">
-        <div class="card">
-          <img src="{% static 'theblog/images/outrun-vaporwave-hd-wallpaper-thumb.jpg' %}" class="card-img-top" alt="..."
-                style="overflow: hidden;">
-          <div class="card-body">
-            <h5 class="card-title"><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h5>
-            <p class="card-text">{{ post.snippet }}</p>
-              <hr/>
-                {{ post.author.first_name }} {{ post.author.last_name }} -
-                <a href="{% url 'category' post.category.slug %}">[{{ post.category }}]</a>
-                - {{ post.post_date }}
-                {% if user.is_authenticated %}
-                {% if user.id == post.author.id %}
-                <hr/>
-                <small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small>
-                <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
-                {% endif %}
-              {% endif %}
+
+
+<div class="row row-cols row-cols-md g-4">
+   {% for post in posts %}
+        <div class="col">
+            <div class="card wrapperCard" tabindex="0">
+                <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+                <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+                    <defs>
+                        <filter id="filter">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+                            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+                        </filter>
+                    </defs>
+                </svg>
+                <div class="card-img-overlay btn-clear1" tabindex="0">
+                    <div class="linkNameButton">
+                        <a href="{% url 'show_profile_page' post.author.id %}">
+                            Author: <br>
+                            {{ post.author.first_name }} {{ post.author.last_name }}
+                        </a>
+                    </div>
+                    <form  action="{% url 'article-detail' post.pk %}" method="post">
+                        {% csrf_token %}
+                        <button class="linkButton" name="post.id" value="{{ post.pk }}">
+                            {{ post.post_date }}
+                            <hr>
+                            {{ post.title }}
+                            <hr/>
+                            {{ post.snippet }}
+                        </button>
+                    </form>
+                    <div class="linkCatButton">
+                        <p class="card-text"><small><a href="{% url 'category' post.category.slug %}">
+                            Category: {{ post.category }}
+                        </a></small></p>
+                    </div>
+                    {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                    <div class="btn-group" tabindex="0">
+                        <div class="linkEditButton">
+                            <span><small><a href="{% url 'update_post' post.pk %}">[Edit]</a></small></span>
+                        </div>
+                        <div class="linkDeleteButton" tabindex="0">
+                            <small><a href="{% url 'delete_post' post.pk %}">[Delete]</a></small>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
           </div>
-        </div>
       </div>
-    {% endfor %}
+      {% endfor %}
 </div>
+
+
+
 
 {% endblock %}

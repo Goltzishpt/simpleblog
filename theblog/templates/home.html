@@ -8,7 +8,6 @@
 
 
 <h1 class="glitch" data-text="Posts">Posts</h1>
-
 <div class="row row-cols row-cols-md g-4">
     {% for post in object_list %}
         <div class="col">
@@ -23,7 +22,7 @@
                     </defs>
                 </svg>
                 <div class="card-img-overlay btn-clear1" tabindex="0">
-                    <div class="linkNameButton" >
+                    <div class="linkNameButton">
                         <a href="{% url 'show_profile_page' post.author.id %}">
                             Author: <br>
                             {{ post.author.first_name }} {{ post.author.last_name }}

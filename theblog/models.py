@@ -62,7 +62,7 @@ class Post(models.Model):
     body = models.TextField(blank=True, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
-    snippet = models.CharField(max_length=50, default='Click Link Above To Read Blog Post...')
+    snippet = models.CharField(max_length=50, default='Click link above to read blog post')
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
 
