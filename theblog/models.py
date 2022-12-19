@@ -39,18 +39,18 @@ class Profile(models.Model):
         return reverse('home')
 
 
-    # def save(self):
-    #     '''
-    #     Сжимает изображение
-    #     '''
-    #     super().save()
-    #
-    #     img = Image.open(self.profile_pic.path)
-    #
-    #     if img.height > 300 or img.width > 300:
-    #         output_size = (300, 300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.profile_pic.path)
+    def save(self):
+        '''
+        Сжимает изображение
+        '''
+        super().save()
+
+        img = Image.open(self.profile_pic.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.profile_pic.path)
 
 
 # on_delete=models.CASCADE - при удалении пользователя удаляет все его сообщения автоматически
@@ -74,6 +74,8 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+
 
 
 class Comment(models.Model):

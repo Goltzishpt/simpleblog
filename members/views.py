@@ -12,7 +12,6 @@ class CreateProfilePageView(CreateView):
     model = Profile
     form_class = ProfilePageForm
     template_name = 'registration/create_user_profile_page.html'
-    # fields = '__all__'
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
@@ -24,7 +23,6 @@ class EditProfilePageView(generic.UpdateView):
     model = Profile
     form_class = ProfilePageForm
     template_name = 'registration/edit_profile_page.html'
-    # fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url', 'pinterest_url']
     success_url = reverse_lazy('home')
 
     def edit_profile(request):

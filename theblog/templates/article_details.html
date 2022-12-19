@@ -4,10 +4,11 @@
 {% block title %}{{ post.title_tag }}{% endblock %}
 {% block content %}
 
-    <h1 class="glitch" data-text="{{ post.title }}">{{ post.title }}</h1>
-    <small>By: {{ post.author.first_name }}
+<h1 class="glitch" data-text="{{ post.title }}">{{ post.title }}</h1>
+<div class="formControl" style="margin: 20px 0 20px 0;">
+        By: {{ post.author.first_name }}
         {{ post.author.last_name }} -
-        {{ post.post_date }} <br/>
+        {{ post.post_date }}
 
         {% if user.is_authenticated %}
             {% if user.id == post.author.id %}
@@ -15,15 +16,24 @@
                 <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
             {% endif %}
         {% endif %}
-        <h4>{{ post.title_tag }}</h4>
-    </small><br/>
-    {% if post.header_image %}
-    <img src="{{ post.header_image.url }}"> <br/><br/>
-    {% endif %}
-    {{ post.body|safe }}
-    <br/><br/>
-    <hr>
-    <br/>
+
+
+
+    <div class="row">
+        <div class="col">
+            <h4>{{ post.title_tag }}</h4>
+            {{ post.body|safe }}
+        </div>
+        <div class="col">
+            {% if post.header_image %}
+                <img src="{{ post.header_image.url }}">
+                
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
 
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
@@ -55,6 +65,7 @@
         {% endif %}
     </form>
 
+<div>
 <br/><br/>
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
@@ -106,15 +117,17 @@
     </div>
   </div>
 </div>
+</div>
 
+<div>
 <hr>
-<h2>Comments</h2>
+    <h2>Comments</h2>
 
-{% if not post.comments.all %}
+    {% if not post.comments.all %}
     No Comments Yet...<a href="{% url 'add_comment' post.pk %}">Add One</a>
-{% else %}
-<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
-<br/>
+    {% else %}
+    <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+    <br/>
     {% for comment in post.comments.all %}
         <strong>
             {{ comment.name }} -
@@ -125,6 +138,7 @@
         <hr/>
     {% endfor %}
 
-{% endif %}
+    {% endif %}
+</div>
 <br/><br/>
 {% endblock %}
