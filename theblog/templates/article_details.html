@@ -27,7 +27,7 @@
         <div class="col">
             {% if post.header_image %}
                 <img src="{{ post.header_image.url }}">
-                
+
             {% endif %}
         </div>
     </div>
@@ -78,7 +78,7 @@
         {% endif %}
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 formControl">
       <div class="card-body">
         <h5 class="card-title">
             {{ post.author.first_name }}
@@ -88,23 +88,21 @@
 
         {% if post.author.profile.id %}
         <p class="small text-muted">
-
-
             <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile page</a>
             {% if post.author.profile.website_url %}
-                | <a href="{{ post.author.profile.website_url }}">Website</a>
+                | <a href="{{ post.author.profile.website_url }}"><i class="iconTelegram"></i></a>
             {% endif %}
             {% if post.author.profile.facebook_url %}
-                | <a href="{{ post.author.profile.facebook_url }}">Facebook</a>
+                | <a href="{{ post.author.profile.facebook_url }}"><i class="iconFacebook"></i></a>
             {% endif %}
             {% if post.author.profile.twitter_url %}
-                | <a href="{{ post.author.profile.twitter_url }}">Twitter</a>
+                | <a href="{{ post.author.profile.twitter_url }}"><i class="iconLinkedIn"></i></a>
             {% endif %}
             {% if post.author.profile.instagram_url %}
-                | <a href="{{ post.author.profile.instagram_url }}">Instagram</a>
+                | <a href="{{ post.author.profile.instagram_url }}"><i class="iconInst"></i></a>
             {% endif %}
             {% if post.author.profile.pinterest_url %}
-                | <a href="{{ post.author.profile.pinterest_url }}">Pinterest</a>
+            | <a href="{{ post.author.profile.pinterest_url }}"><i class="iconPinterest"></i></a>
             {% endif %}
         {% endif %}
         </p>

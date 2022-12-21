@@ -1,16 +1,11 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
-
-
-
 <h1 class="glitch" data-text="Posts">Posts</h1>
 <div class="row row-cols row-cols-md g-4">
     {% for post in object_list %}
-        <div class="col">
+        <div class="col" style="width: 350px;">
             <div class="card wrapperCard" tabindex="0">
                 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
                 <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">

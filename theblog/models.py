@@ -4,6 +4,7 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 from slugify import slugify
 from PIL import Image
+from django_resized import ResizedImageField
 
 
 class Category(models.Model):
@@ -25,10 +26,10 @@ class Category(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField(max_length=255)
-    profile_pic = models.ImageField(null=True, blank=True, upload_to='images/profile/')
-    website_url = models.CharField(max_length=255, null=True, blank=True)
+    profile_pic = ResizedImageField(size=[250, 250], blank=True, null=True,  crop=['top', 'left', 'middle', 'center'], upload_to='images/profile/')
+    telegram_url = models.CharField(max_length=255, null=True, blank=True)
     facebook_url = models.CharField(max_length=255, null=True, blank=True)
-    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+    linkedIn_url = models.CharField(max_length=255, null=True, blank=True)
     instagram_url = models.CharField(max_length=255, null=True, blank=True)
     pinterest_url = models.CharField(max_length=255, null=True, blank=True)
 
@@ -39,24 +40,10 @@ class Profile(models.Model):
         return reverse('home')
 
 
-    def save(self):
-        '''
-        Сжимает изображение
-        '''
-        super().save()
-
-        img = Image.open(self.profile_pic.path)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.profile_pic.path)
-
-
 # on_delete=models.CASCADE - при удалении пользователя удаляет все его сообщения автоматически
 class Post(models.Model):
     title = models.CharField(max_length=30)
-    header_image = models.ImageField(null=True, blank=True, upload_to='images/')
+    header_image = ResizedImageField(size=[500, 300], blank=True, null=True, upload_to='images/')
     title_tag = models.CharField(max_length=70)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField(blank=True, null=True)
@@ -74,8 +61,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
-
-
 
 
 class Comment(models.Model):

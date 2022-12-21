@@ -35,8 +35,8 @@ class ShowProfilePageView(DetailView):
     template_name = 'registration/user_profile.html'
     success_url = reverse_lazy('home')
 
+
     def get_context_data(self, *args, **kwargs):
-        # users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         posts = Post.objects.filter(author=self.kwargs['pk'])
@@ -47,7 +47,6 @@ class ShowProfilePageView(DetailView):
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
-    # form_class = PasswordChangeForm
     success_url = reverse_lazy('password_success')
 
 

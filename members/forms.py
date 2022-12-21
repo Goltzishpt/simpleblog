@@ -10,16 +10,15 @@ from django.utils.translation import gettext_lazy as _
 class ProfilePageForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url', 'pinterest_url')
-        labels = {'bio': 'Bio', 'profile_pic': 'Photo', 'website_url': 'Website', 'facebook_url': 'Facebook',
-                  'twitter_url': 'Twitter', 'instagram_url': 'Instagram', 'pinterest_url': 'Pinterest'}
-
-        widgets ={
+        fields = ('bio', 'profile_pic', 'telegram_url', 'facebook_url', 'linkedIn_url', 'instagram_url', 'pinterest_url')
+        labels = {'bio': 'Bio', 'profile_pic': 'Photo', 'telegram_url': 'Telegram', 'facebook_url': 'Facebook',
+                  'linkedIn_url': 'LinkedIn', 'instagram_url': 'Instagram', 'pinterest_url': 'Pinterest'}
+        widgets = {
             'bio': forms.Textarea(attrs={'class': 'formControl', 'placeholder': 'Enter your bio'}),
-            'website_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your website'}),
+            'telegram_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your Telegram'}),
             'facebook_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your facebook'}),
-            'twitter_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your twitter'}),
-            'instagram_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your instagram'}),
+            'linkedIn_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your LinkedIn'}),
+            'instagram_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your Instagram'}),
             'pinterest_url': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Enter your pinterest'}),
             'profile_pic': forms.FileInput(attrs={'class': 'formControl'}),
         }

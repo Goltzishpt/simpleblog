@@ -60,8 +60,19 @@ footer {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('../images/icons8-instagram-48.png');
+    background-image: url(../images/icons8-instagram-48.png);
 }
+.iconInstGrey {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/instgrey.png);
+}
+
 .iconTelegram {
     position: relative;
     display: inline-block;
@@ -70,9 +81,18 @@ footer {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('../images/icons8-телеграмма-app-48.png') ;
+    background-image: url(../images/icons8-телеграмма-app-48.png);
 }
-
+.iconTelegramGrey {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/telegramgrey.png);
+}
 .iconLinkedIn {
     position: relative;
     display: inline-block;
@@ -81,8 +101,64 @@ footer {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('../images/icons8-линкедин-48.png') ;
+    background-image: url(../images/icons8-линкедин-48.png);
 }
+.iconLinkedInGrey {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/linkedgrey.png);
+}
+
+
+.iconPinterest {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/пинтерест.png);
+}
+.iconPinterestGrey {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/icons8-pinterest-48.png);
+}
+
+.iconFacebook {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/icons8-facebook-48.png);
+}
+
+.iconFacebookGrey {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/facebookgrey.png);
+
+}
+
 
 label {
     color: #fff !important;
@@ -808,3 +884,44 @@ a:hover {
     margin: 20px;
 }
 
+
+.profilePic {
+    margin: 10px 0 20px 0;
+}
+
+.pic {
+    border-radius: 5px;
+
+}
+
+.profileBlock {
+    height: 600px;
+    background: rgba(170, 170, 170, 0.400);
+    border-radius: 5px;
+    border: 1px solid rgba(170, 170, 170, 0.800);
+}
+
+.profileBlock:hover {
+    box-shadow: 0 0 10px 0.50rem rgba(200, 110, 160, 0.6);
+    border-radius: 5px;
+}
+
+.name {
+    margin: 10px;
+}
+
+.profileUrls {
+    margin: 10px 0 10px 0;
+}
+
+.profileBio {
+    margin: 10px 27px 20px 27px;
+    text-align: justify;
+}
+
+.h1Profile {
+    background: rgba(170, 170, 170, 0.400);
+    margin: 10px 2px 15px 2px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
