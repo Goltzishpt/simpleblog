@@ -1,5 +1,5 @@
-
-
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap");
 body {
     font-family: 'Montserrat', sans-serif !important;
@@ -924,4 +924,29 @@ a:hover {
     margin: 10px 2px 15px 2px;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
+}
+
+
+
+.profileArticle {
+    height: 250px;
+    width: 100%;
+    background: rgba(170, 170, 170, 0.5);
+    padding:20px;
+
+}
+
+.picArticle {
+    height: 200px;
+    width: 200px;
+}
+
+.articleBio {
+    text-align: justify;
+
+}
+
+.authorArticle {
+    margin: 15px;
+
 }

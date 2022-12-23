@@ -31,13 +31,14 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'body', 'snippet')
+        fields = ('title', 'title_tag', 'category', 'body', 'snippet')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
-            'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'}),
-            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'formControl', 'placeholder': ''}),
+            'title_tag': forms.TextInput(attrs={'class': 'formControl'}),
+            'category': forms.Select(attrs={'class': 'formControl', 'placeholder': 'Select'}),
+            'body': forms.Textarea(attrs={'class': 'formControl'}),
+            'snippet': forms.Textarea(attrs={'class': 'formControl'}),
         }
 
 

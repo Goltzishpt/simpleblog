@@ -43,10 +43,10 @@ class Profile(models.Model):
 # on_delete=models.CASCADE - при удалении пользователя удаляет все его сообщения автоматически
 class Post(models.Model):
     title = models.CharField(max_length=30)
-    header_image = ResizedImageField(size=[500, 300], blank=True, null=True, upload_to='images/')
+    header_image = ResizedImageField(size=[1000, 500], blank=True, null=True, upload_to='images/')
     title_tag = models.CharField(max_length=70)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField(blank=True, null=True)
+    body = models.TextField(max_length=5000, blank=True, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
     snippet = models.CharField(max_length=50, default='Click link above to read blog post')
