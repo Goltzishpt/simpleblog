@@ -6,136 +6,141 @@
 
 <h1 class="glitch" data-text="{{ post.title }}">{{ post.title }}</h1>
 <div class="formControl" style="margin: 20px 0 20px 0;">
-    <div>
-        <div class="authorArticle">
-            <p>By: {{ post.author.first_name }}
-            {{ post.author.last_name }} -
-            {{ post.post_date }}
-            </p>
-            <p>
-            {% if user.is_authenticated %}
-                {% if user.id == post.author.id %}
-                    <a href="{% url 'update_post' post.pk %}">[Edit]</a>
-                    <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
+    <div class="grid" style="display: block;">
+        <div class="col g-col-6">
+            <div class="authorArticle" style="margin: 20px;">
+                <p>By: {{ post.author.first_name }}
+                {{ post.author.last_name }} -
+                {{ post.post_date }}
+                </p>
+                <p>
+                {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                        <a href="{% url 'update_post' post.pk %}">[Edit]</a>
+                        <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            </p>
-        </div>
-        <div>
-            <h3>{{ post.title_tag }}</h3>
-            {% if post.header_image %}
-                <img src="{{ post.header_image.url }}" style="float: left; margin: 15px;">
-            {% endif %}
-
-            <p>{{ post.body|safe }}</p>
-
-        </div>
-    </div>
-
-    <div style="margin: 20px;">
-        <form action="{% url 'like_post' post.pk %}" method="POST">
-        {% csrf_token %}
-        {% if user.is_authenticated %}
-            {% if liked %}
-                <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-                <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
-                    <defs>
-                        <filter id="filter">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
-                            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
-                        </filter>
-                    </defs>
-                </svg>
-                <button class="btn btn-small btn-dark btn-glitch goltzButton" type="submit" name="post_id" value="{{ post.id }}">🖤 {{ total_likes }}</button>
-            {% else %}
-                <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
-                    <defs>
-                        <filter id="filter">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
-                            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
-                        </filter>
-                    </defs>
-                </svg>
-                <button class="btn btn-small btn-clear btn-light btn-glitch goltzButton" type="submit" name="post_id" value="{{ post.id }}">🤍 {{ total_likes }}</button>
-            {% endif %}
-        {% else %}
-            <small><a href="{% url 'login' %}">Login</a> to like</small>
-        {% endif %}
-        </form>
-    </div>
-
-
-<div class="profileArticle" style="border-radius: 5px; width: 100%; height: 100%;">
-    <div class="grid text-center" style="margin: 20px; padding: 20px 20px 15px 0;">
-        <div class="col g-col-2">
-            <div class="picArticle" style="width: 100%; height: 100%;">
-                {% if post.author.profile.profile_pic %}
-                    <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded" alt="...">
-                {% else %}
-                    <img src="{% static 'theblog/images/User-avatar.svg.png' %}" class="card-img">
+                </p>
+            </div>
+            <div style="display: block; height: 100%; width: 100%; padding: 5px; margin: 15px;">
+                <h3 class="">{{ post.title_tag }}</h3>
+                {% if post.header_image %}
+                    <img src="{{ post.header_image.url }}" style=" float: left; padding: 20px 15px 0 0;  margin: 0 10px 20px 0; max-width: 90%;">
                 {% endif %}
             </div>
         </div>
-        <div class="col g-col-10" style="text-align: left; padding: 2px 20px 20px 20px;  width: 100%;">
-            <div class="" style="font-size: 100%;">
-                {% if post.author.profile.id %}
-                    <a href="{% url 'show_profile_page' post.author.profile.id %}">
-                    {{ post.author.first_name }}
-                    {{ post.author.last_name }}
-                    </a>
-                {% else %}
-                    {{ post.author.first_name }}
-                    {{ post.author.last_name }}
-                {% endif %}
+        <div class="col g-col-6" style="margin: 0 20px 20px 20px;">
+            <p style="text-align: justify;">{{ post.body|safe }}</p>
+        </div>
 
-                {% if post.author.profile.id %}
-                    <div style="font-size: 100%;">
-                        {% if post.author.profile.telegram_url %}
-                            <a href="{{ post.author.profile.telegram_url }}"><i class="iconTelegram"></i></a>
-                        {% else %}
-                            <i class="iconTelegramGrey"></i>
-                        {% endif %}
-                        {% if post.author.profile.facebook_url %}
-                            <a href="{{ post.author.profile.facebook_url }}"><i class="iconFacebook"></i></a>
-                        {% else %}
-                            <i class="iconFacebookGrey"></i>
-                        {% endif %}
-                        {% if post.author.profile.linkedIn_url %}
-                            <a href="{{ post.author.profile.linkedIn_url }}"><i class="iconLinkedIn"></i></a>
-                        {% else %}
-                            <i class="iconLinkedInGrey"></i>
-                        {% endif %}
-                        {% if post.author.profile.instagram_url %}
-                            <a href="{{ post.author.profile.instagram_url }}"><i class="iconInst"></i></a>
-                        {% else %}
-                            <i class="iconInstGrey"></i>
-                        {% endif %}
-                        {% if post.author.profile.pinterest_url %}
-                            <a href="{{ post.author.profile.pinterest_url }}"><i class="iconPinterest"></i></a>
-                         {% else %}
-                            <i class="iconPinterestGrey"></i>
-                        {% endif %}
-                    </div>
+        <div style="margin: 20px; clear: both;">
+            <form action="{% url 'like_post' post.pk %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+                {% if liked %}
+                    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+                    <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+                        <defs>
+                            <filter id="filter">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+                            </filter>
+                        </defs>
+                    </svg>
+                    <button class="btn btn-small btn-dark btn-glitch goltzButton" type="submit" name="post_id" value="{{ post.id }}">🖤 {{ total_likes }}</button>
+                {% else %}
+                    <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+                        <defs>
+                            <filter id="filter">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+                            </filter>
+                        </defs>
+                    </svg>
+                    <button class="btn btn-small btn-clear btn-light btn-glitch goltzButton" type="submit" name="post_id" value="{{ post.id }}">🤍 {{ total_likes }}</button>
                 {% endif %}
-                <div class="articleBio" style="font-size: 100%;">
-                    {% if post.author.profile.bio %}
-                        <p class="...">{{ post.author.profile.bio }}</p>
-                    {% else %}
-                        <p class="...">{{ post.author.first_name }}`s bio is secret.</p>
+            {% else %}
+                <small><a href="{% url 'login' %}">Login</a> to like</small>
+            {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <div class="card mb-3" style="max-width: 540px; background: rgba(170, 170, 170, 0.8); padding: 10px 10px 0 10px; clear: both; margin: 20px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if post.author.profile.profile_pic %}
+                   <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="...">
+                {% else %}
+                    <img src="{% static 'theblog/images/User-avatar.svg.png' %}" class="img-fluid rounded-start" alt="...">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {% if post.author.profile.id %}
+                            <a href="{% url 'show_profile_page' post.author.profile.id %}">
+                            {{ post.author.first_name }}
+                            {{ post.author.last_name }}
+                            </a>
+                        {% else %}
+                            {{ post.author.first_name }}
+                            {{ post.author.last_name }}
+                        {% endif %}
+                    </h5>
+
+                    <p class="card-text"><small class="text-muted">
+                        {% if post.author.profile.id %}
+                            {% if post.author.profile.telegram_url %}
+                                <a href="{{ post.author.profile.telegram_url }}"><i class="iconTelegram"></i></a>
+                            {% else %}
+                                <i class="iconTelegramGrey"></i>
+                            {% endif %}
+                            {% if post.author.profile.facebook_url %}
+                                <a href="{{ post.author.profile.facebook_url }}"><i class="iconFacebook"></i></a>
+                            {% else %}
+                                <i class="iconFacebookGrey"></i>
+                            {% endif %}
+                            {% if post.author.profile.linkedIn_url %}
+                                <a href="{{ post.author.profile.linkedIn_url }}"><i class="iconLinkedIn"></i></a>
+                            {% else %}
+                                <i class="iconLinkedInGrey"></i>
+                            {% endif %}
+                            {% if post.author.profile.instagram_url %}
+                                <a href="{{ post.author.profile.instagram_url }}"><i class="iconInst"></i></a>
+                            {% else %}
+                                <i class="iconInstGrey"></i>
+                            {% endif %}
+                            {% if post.author.profile.pinterest_url %}
+                                <a href="{{ post.author.profile.pinterest_url }}"><i class="iconPinterest"></i></a>
+                             {% else %}
+                                <i class="iconPinterestGrey"></i>
+                            {% endif %}
                     {% endif %}
+                    </small></p>
+                     <p class="card-text" style="text-align: justify;">
+                        {% if post.author.profile.bio %}
+                            {{ post.author.profile.bio|slice:":120"|safe }}
+                        {% else %}
+                            {{ post.author.first_name }}`s bio is secret.
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 
 
-<div>
+
+<div class="formControl">
     <h2>Comments</h2>
     {% if not post.comments.all %}
-        No Comments Yet...<a href="{% url 'add_comment' post.pk %}">Add One</a>
+        No Comments Yet...<a href="{% url 'add_comment' post.pk %}">Tap here for add one</a>
     {% else %}
+    <form action="{% url 'like_post' post.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
         <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
         <br/>
         {% for comment in post.comments.all %}
@@ -147,6 +152,7 @@
             {{ comment.body }}
             <hr/>
         {% endfor %}
+    </form>
     {% endif %}
 </div>
 <br/><br/>

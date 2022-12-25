@@ -43,7 +43,7 @@ class Profile(models.Model):
 # on_delete=models.CASCADE - при удалении пользователя удаляет все его сообщения автоматически
 class Post(models.Model):
     title = models.CharField(max_length=30)
-    header_image = ResizedImageField(size=[1000, 500], blank=True, null=True, upload_to='images/')
+    header_image = ResizedImageField(size=[300, 300], crop=['top', 'left', 'middle', 'center'], blank=True, null=True, upload_to='images/')
     title_tag = models.CharField(max_length=70)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField(max_length=5000, blank=True, null=True)
@@ -51,6 +51,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
     snippet = models.CharField(max_length=50, default='Click link above to read blog post')
     likes = models.ManyToManyField(User, related_name='blog_posts')
+
 
 
     def total_likes(self):
@@ -65,9 +66,12 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     body = models.TextField(max_length=255)
     date_added = models.DateTimeField(auto_now_add=True)
 
+
     def __str__(self):
-        return '%s - %s' % (self.post.title, self)
+        return '%s - %s' % (self.post.title, self) + ' | ' + str(self.author)
+
