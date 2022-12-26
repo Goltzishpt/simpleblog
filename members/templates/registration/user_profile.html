@@ -1,18 +1,17 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
 <h1 class="glitch " data-text="{{ page_user.user.first_name }}`s profile">{{ page_user.user.first_name }}`s profile</h1>
-
 <div>
-    <div class="grid text-center">
-        <div class="col g-col-3">
+    <div class="grid text-center" style="display: flex; flex-direction: row; flex-wrap: wrap;
+    justify-content: space-between; align-items: stretch; ">
+        <div class="col g-col-3" style="align-self: flex-start; max-width: 310px;">
             <div class="profileBlock">
                 <div class="profilePic">
                     <div class="pic">
                         {% if page_user.profile_pic %}
-                            <img src="{{ page_user.profile_pic.url }}" class="" alt="...">
+                            <img src="{{ page_user.profile_pic.url }}" style="max-width: 100%;" alt="...">
                         {% else %}
                             <img src="{% static 'theblog/images/User-avatar.svg.png' %}" class="card-img">
                         {% endif %}
@@ -22,7 +21,7 @@
                     {{ page_user.user.first_name }}
                     {{ page_user.user.last_name }}
                 </div>
-                <div class="profileUrls">
+                <div class="profileUrls" style="max-width: 100%" >
                     {% if page_user.telegram_url %}
                         <a href="{{ page_user.telegram_url }}"><i class="iconTelegram"></i></a>
                     {% else %}
@@ -49,7 +48,7 @@
                         <i class="iconPinterestGrey"></i>
                     {% endif %}
                 </div>
-                <div class="profileBio">
+                <div class="profileBio" style="max-width: 100%; word-wrap: break-word;" >
                     {% if page_user.bio %}
                         <p class="card-text">{{ page_user.bio }}</p>
                     {% else %}
@@ -59,7 +58,7 @@
             </div>
         </div>
 
-        <div class="col g-col-9 formControl">
+        <div class="col g-col-9 formControl" style="justify-content: space-between;">
             <h1 class="h1Profile" data-text="{{ page_user.user.first_name }}`s posts">{{ page_user.user.first_name }}`s posts</h1>
             <div class="row row-cols row-cols-md g-3">
                {% for post in posts %}
@@ -114,10 +113,6 @@
                   {% endfor %}
             </div>
         </div>
-
-
-
-
     </div>
 </div>
 

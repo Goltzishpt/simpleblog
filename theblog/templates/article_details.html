@@ -138,7 +138,16 @@
 <div class="formControl">
     <h2>Comments</h2>
     {% if not post.comments.all %}
-        No Comments Yet...<a href="{% url 'add_comment' post.pk %}">Tap here for add one</a>
+        <div class="commentBody" style="padding: 15px; margin: 5px; border: 1px solid rgba(170, 170, 170, 0.8); border-radius: 5px;">
+            No Comments Yet...
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_comment' post.pk %}">Tap here for add one</a>
+            {% else %}
+                Tap for <a href="{% url 'register' %}" style="color: rgb(140, 140, 255);">register</a> and add comment
+                or
+                <a  href="{% url 'login' %}" style="color: rgb(140, 140, 255);">login</a>
+        </div>
+        {% endif%}
     {% else %}
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
@@ -155,7 +164,7 @@
             <div style="padding: 0 5px 0 5px;">
                 {{ comment.date_added }}
             </div>
-<hr>
+            <hr>
             <div style="padding: 0 5px 0 5px; text-align: justify;">
                 {{ comment.body }}
             </div>
@@ -172,5 +181,4 @@
     </form>
     {% endif %}
 </div>
-<br/><br/>
 {% endblock %}

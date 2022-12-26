@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Edit Profile Page{% endblock %}
@@ -23,20 +22,22 @@
             <button class="btn btn-clear btn-light btn-glitch goltzButton" style="float: right; margin: 0 0 20px 0;">Update</button>
         </form>
     </div>
-
-
     <script>
         var name = "{{ user.id }}";
         document.getElementById("elder").value
                 = name;
     </script>
     {% else %}
-        You are not the correct User To Edit This Page
+        <h1 class="glitch" data-text="You are not the correct User To Edit This Page">
+            You are not the correct User To Edit This Page
+        </h1>
+
     {% endif %}
 {% else %}
 
-You`re not allowed here! (and you know it...)
-
+<h1 class="glitch" data-text="You`re not allowed here! (and you know it)">
+    You`re not allowed here! (and you know it)
+</h1>
 {% endif %}
 
 {% endblock %}

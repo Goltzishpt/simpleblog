@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from django.db import models
 from theblog.models import Profile
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import gettext_lazy as _
@@ -53,11 +52,6 @@ class EditProfileForm(UserChangeForm):
                                     attrs={'class': 'formControl', 'type': 'password',}))
     password = ReadOnlyPasswordHashField(label=_(""), help_text=_('',), widget=forms.PasswordInput(
                                     attrs={'class': 'passHidden ', 'type': 'password'}))
-    # last_login = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'formControl'}))
-    # is_superuser = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
-    # is_staff = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
-    # is_active = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
-    # date_joined = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User

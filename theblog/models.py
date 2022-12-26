@@ -1,9 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from ckeditor.fields import RichTextField
 from slugify import slugify
-from PIL import Image
 from django_resized import ResizedImageField
 
 
@@ -40,7 +38,6 @@ class Profile(models.Model):
         return reverse('home')
 
 
-# on_delete=models.CASCADE - при удалении пользователя удаляет все его сообщения автоматически
 class Post(models.Model):
     title = models.CharField(max_length=30)
     header_image = ResizedImageField(size=[300, 300], crop=['top', 'left', 'middle', 'center'], blank=True, null=True, upload_to='images/')
@@ -51,8 +48,6 @@ class Post(models.Model):
     category = models.ForeignKey(Category, related_name='post', null=True, on_delete=models.SET_NULL)
     snippet = models.CharField(max_length=50, default='Click link above to read blog post')
     likes = models.ManyToManyField(User, related_name='blog_posts')
-
-
 
     def total_likes(self):
         return self.likes.count

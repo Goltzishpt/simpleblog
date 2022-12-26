@@ -1,10 +1,11 @@
-
 {% extends 'base.html' %}
-{% block title %}Update a blog post{% endblock %}
+{% block title %}
+    Update a blog post
+{% endblock %}
 {% block content %}
 
 {% if user.is_authenticated %}
-    <h1 class="glitch" data-text="Update Post...">Update Post...</h1>
+    <h1 class="glitch" data-text="Update Post">Update Post</h1>
     <br/><br/>
     <div class="form-group">
         <form method="POST">
@@ -21,11 +22,9 @@
             <button class="btn btn-small btn-clear btn-light btn-glitch goltzButton" style="margin: 0 0 10px 20px; float: right;">Update</button>
         </form>
     </div>
-
 {% else %}
-
-You`re not allowed here! (and you know it...)
-
+    <h1 class="glitch" data-text="You`re not allowed here! (and you know it)">You`re not allowed here! (and you know it)</h1>
 {% endif %}
+
 {% endblock %}
 
