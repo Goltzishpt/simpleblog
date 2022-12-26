@@ -1,16 +1,16 @@
 
 {% extends 'base.html' %}
-{% block title %}Delete the blog post{% endblock %}
+{% block title %}Create a new blog post{% endblock %}
 {% block content %}
 
 {% if user.is_authenticated %}
 
-    <h1 class="glitch" data-text="Delete Post">Delete Post</h1>
+    <h1 class="glitch" data-text="Delete comment">Delete comment</h1>
     <br/><br/>
 
 
     <div class="formControl">
-         <h3 class="DeleteEdit">Delete: {{ post.title }}</h3>
+         <h3 class="DeleteEdit">Delete: {{ comments.title }}</h3>
         <form method="POST">
             {% csrf_token %}
             <h5 class="DeleteEdit">Are you sure?!</h5>

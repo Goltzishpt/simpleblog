@@ -1,7 +1,6 @@
 from django import forms
 from .models import Post, Category, Comment
 
-from django.contrib.auth.models import User
 
 
 class PostForm(forms.ModelForm):
@@ -45,14 +44,13 @@ class EditForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-
-
     class Meta:
         model = Comment
-        fields = ('name', 'body', 'author')
+        fields = ('name', 'body', 'author', 'post')
 
         widgets = {
-            'author': forms.TextInput(attrs={'class': 'formControl', 'value': '', 'id': 'elder'}),
+            'author': forms.HiddenInput(),
+            'post': forms.HiddenInput(),
             'name': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Write your comment here'}),
             'body': forms.Textarea(attrs={'class': 'formControl'}),
          }

@@ -16,8 +16,10 @@
                 <p>
                 {% if user.is_authenticated %}
                     {% if user.id == post.author.id %}
-                        <a href="{% url 'update_post' post.pk %}">[Edit]</a>
-                        <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
+                    <div class="btn-group" tabindex="0">
+                        <a class="linkEditButton" href="{% url 'update_post' post.pk %}">[Edit]</a>
+                        <a class="linkDeleteButton" href="{% url 'delete_post' post.pk %}">[Delete]</a>
+                    </div>
                     {% endif %}
                 {% endif %}
                 </p>
@@ -141,16 +143,31 @@
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+        <div class="formControl">
+            <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+        </div>
         <br/>
-        {% for comment in post.comments.all %}
-            <strong>
-            {{ comment.name }} -
-            {{ comment.date_added }}
-            </strong>
-            <br/>
-            {{ comment.body }}
-            <hr/>
+        {% for comment in comments %}
+        <div class="commentBody" style="padding: 15px; margin: 5px; border: 1px solid rgba(170, 170, 170, 0.8); border-radius: 5px;">
+            <div style="padding: 0 5px 0 5px;">
+                {{ comment.author.first_name }} {{ comment.author.last_name }}
+            </div>
+            <div style="padding: 0 5px 0 5px;">
+                {{ comment.date_added }}
+            </div>
+<hr>
+            <div style="padding: 0 5px 0 5px; text-align: justify;">
+                {{ comment.body }}
+            </div>
+            <hr>
+            {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
+            <div class="btn-group" tabindex="0">
+            <a class="linkDeleteButton" href="{% url 'delete_comment' comment.pk %}">[Delete]</a>
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
         {% endfor %}
     </form>
     {% endif %}

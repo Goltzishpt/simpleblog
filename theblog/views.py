@@ -1,12 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category, Comment, Profile
+from .models import Post, Category, Comment
 from .forms import PostForm, EditForm, CommentForm, CategoryForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-
 
 
 def LikeView(request, pk):
@@ -55,12 +52,14 @@ class CategoryView(DetailView):
 class ArticleDetailView(DetailView):
     model = Post
     template_name = 'article_details.html'
+    ordering = ['-post_date']
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
         context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = stuff.total_likes()
+        comments = Comment.objects.filter(post=self.kwargs['pk']).order_by('-date_added')
 
         liked = False
         if stuff.likes.filter(id=self.request.user.id).exists():
@@ -68,6 +67,7 @@ class ArticleDetailView(DetailView):
         context['cat_menu'] = cat_menu
         context['total_likes'] = total_likes
         context['liked'] = liked
+        context['comments'] = comments
         return context
 
     def post(self, request, *args, **kwargs):
@@ -103,44 +103,10 @@ class AddCommentView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    # def form_valid(self, form):
-    #     form.instance.post_id = self.request.user.profile
-    #     return super().form_valid(form)
-
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super(AddCommentView, self).get_context_data(*args, **kwargs)
-    #     print('context', context)
-    #     author = User.objects.filter(pk=self.request.user.pk)
-    #     print('author', author)
-    #     context['author'] = author
-    #     return context
-
-    def post(self, request, *args, **kwargs):
-        form = AddCommentView(request.POST)
-        print('request', self.request.user)
-        if form.is_valid():
-            comment = form.save()
-            comment.save()
-            return HttpResponseRedirect(reverse_lazy('home'))
-        return render(request, 'article_details.html', {'form': form})
-    def post(self, request, *args, **kwargs):
-
-        form = CommentForm(request.POST)
-        form.instance.user = request.user
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('myapp:index'))
-
-
-
-
     def get(self, request, *args, **kwargs):
-        form = CommentForm()
+        form = CommentForm(initial={'author': request.user, 'post': kwargs['pk']})
         context = {'form': form}
-        return render(request, 'myapp/addcandidateview.html', context)
-
-
-
+        return render(request, 'add_comment.html', context)
 
 
 class AddCategoryView(CreateView):
@@ -167,6 +133,7 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('home')
 
 
-
-
-
+class DeleteCommentView(DeleteView):
+    model = Comment
+    template_name = 'delete_comment.html'
+    success_url = reverse_lazy('home')
