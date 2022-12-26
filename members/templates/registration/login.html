@@ -1,6 +1,7 @@
-
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
 {% block content %}
 
 <h1 class="glitch" data-text="Login">Login</h1>
@@ -13,11 +14,11 @@
         </div>
         <div class="mb-3">
             <input type="password" class="formControl" name="password" placeholder="Password">
-        <div id="emailHelp" style="margin: 0 0 0 20px;">
-            Not a user? <a href="{% url 'register' %}" style="color: rgb(140, 140, 255);">Register here</a>
+            <div id="emailHelp" style="margin: 0 0 0 20px;">
+                Not a user? <a href="{% url 'register' %}" style="color: rgb(140, 140, 255);">Register here</a>
+            </div>
         </div>
-        </div>
-         <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+        <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
             <defs>
                 <filter id="filter">
                     <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
