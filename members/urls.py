@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import UserRegisterView, UserEditView, ShowProfilePageView, EditProfilePageView, CreateProfilePageView
-
+from members.renders.views import (UserRegisterView, UserEditView, ShowProfilePageView, EditProfilePageView,
+                                   CreateProfilePageView)
 
 urlpatterns = [
     path('register/', UserRegisterView.as_view(), name='register'),
